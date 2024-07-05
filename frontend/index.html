@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1 id="welcome-message">Loading...</h1>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            axios.get('http://127.0.0.1:5000/')
+                .then(function (response) {
+                    document.getElementById('welcome-message').innerText = response.data.message;
+                })
+                .catch(function (error) {
+                    console.log('Error fetching welcome message:', error);
+                    document.getElementById('welcome-message').innerText = 'Error loading message';
+                });
+        });
+    </script>
+</body>
+</html>
